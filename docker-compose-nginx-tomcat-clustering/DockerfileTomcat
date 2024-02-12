@@ -1,0 +1,12 @@
+FROM tomcat:latest
+MAINTAINER songnumber1 <songnumber1@naver.com>
+
+ARG conf
+ARG warpath
+
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY $conf/* /usr/share/apache-tomcat-8.5.50/conf/
+COPY $warpath /usr/share/apache-tomcat-8.5.50/webapps/ROOT.war
+
+WORKDIR /usr/local/tomcat/bin
+CMD ["catalina.sh", "run"]

@@ -1,0 +1,9 @@
+FROM nginx:latest
+MAINTAINER songnumber1 <songnumber1@naver.com>
+
+ARG conf
+
+COPY $conf/nginx.conf /etc/nginx/nginx.conf
+
+WORKDIR /usr/local/tomcat/bin
+CMD ["nginx", "-g", "daemon off;"]
